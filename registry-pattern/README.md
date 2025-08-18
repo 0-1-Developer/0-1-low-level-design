@@ -112,7 +112,61 @@ registry-pattern/
 │   └── typesafe/                   # Type-Safe Registry Pattern
 │       ├── TypeSafeRegistry.java
 │       └── TypeSafeRegistryDemo.java
+├── docs/uml/                       # UML Diagrams
+│   ├── README.md                   # UML documentation overview
+│   ├── basic-registry-class-diagram.md
+│   ├── basic-registry-sequence-diagram.md
+│   ├── factory-registry-class-diagram.md
+│   ├── factory-registry-sequence-diagram.md
+│   ├── typesafe-registry-class-diagram.md
+│   └── typesafe-registry-sequence-diagram.md
 └── README.md
+```
+
+## 📊 UML Diagrams
+
+This project includes comprehensive UML diagrams to help visualize the structure and behavior of each registry pattern implementation. All diagrams are created using Mermaid syntax and render directly in GitHub.
+
+### 🏗️ Class Diagrams
+Visualize the static structure, relationships, and key methods:
+
+| Pattern | Class Diagram | Key Features |
+|---------|---------------|--------------|
+| **Basic Registry** | [📋 View Diagram](docs/uml/basic-registry-class-diagram.md) | String keys, singleton pattern, eager initialization |
+| **Factory Registry** | [📋 View Diagram](docs/uml/factory-registry-class-diagram.md) | Factory functions, lazy initialization, dual scopes |
+| **Type-Safe Registry** | [📋 View Diagram](docs/uml/typesafe-registry-class-diagram.md) | Class<T> keys, compile-time safety, generics |
+
+### 🔄 Sequence Diagrams
+Understand the runtime interactions and method call flows:
+
+| Pattern | Sequence Diagram | Key Interactions |
+|---------|------------------|------------------|
+| **Basic Registry** | [🔄 View Diagram](docs/uml/basic-registry-sequence-diagram.md) | Registration → Storage → Retrieval → Usage |
+| **Factory Registry** | [🔄 View Diagram](docs/uml/factory-registry-sequence-diagram.md) | Factory Registration → Lazy Creation → Caching |
+| **Type-Safe Registry** | [🔄 View Diagram](docs/uml/typesafe-registry-sequence-diagram.md) | Type-Safe Registration → Safe Retrieval → Direct Usage |
+
+### 📚 Complete UML Documentation
+For detailed explanations, comparison overviews, and viewing instructions, see the [**UML Documentation**](docs/uml/README.md).
+
+**Quick Preview - Pattern Comparison:**
+
+```mermaid
+graph TB
+    subgraph "Registry Pattern Variants"
+        A[Basic Registry<br/>String Keys] --> D[Service Lookup]
+        B[Factory Registry<br/>Supplier Functions] --> D
+        C[Type-Safe Registry<br/>Class Keys] --> D
+    end
+    
+    subgraph "Key Characteristics"
+        A --> A1[Eager Initialization<br/>Simple Implementation<br/>Runtime Type Safety]
+        B --> B1[Lazy Initialization<br/>Memory Efficient<br/>Flexible Lifecycles]
+        C --> C1[Compile-Time Safety<br/>No Casting Required<br/>Refactoring Safe]
+    end
+    
+    style A fill:#ffcccc
+    style B fill:#ccffcc
+    style C fill:#ccccff
 ```
 
 ## 🚀 Running the Examples
