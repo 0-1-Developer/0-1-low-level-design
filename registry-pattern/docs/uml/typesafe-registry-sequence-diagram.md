@@ -6,7 +6,7 @@
 sequenceDiagram
     participant Demo as TypeSafeRegistryDemo
     participant Registry as TypeSafeRegistry
-    participant RegMap as registry (Map)
+    participant RegMap as RegistryMap
     participant EmailClass as EmailService.class
     participant SMSClass as SMSService.class
     participant EmailSvc as EmailService
@@ -14,18 +14,15 @@ sequenceDiagram
     
     Note over Demo: Type-Safe Registration Phase
     
-    %% Get Registry Instance
     Demo->>Registry: getInstance()
     Registry-->>Demo: registry instance
     
-    %% Create Services (Eager Initialization)
     Demo->>EmailSvc: new EmailService()
     EmailSvc-->>Demo: emailService
     
     Demo->>SMSSvc: new SMSService()
     SMSSvc-->>Demo: smsService
     
-    %% Type-Safe Registration
     Demo->>Registry: register(EmailService.class, emailService)
     Note over Registry: Generics ensure type T matches Class<T>
     Registry->>RegMap: put(EmailService.class, emailService)
@@ -39,7 +36,6 @@ sequenceDiagram
     
     Note over Demo: Type-Safe Retrieval Phase
     
-    %% Get Email Service (Type-Safe)
     Demo->>Registry: get(EmailService.class)
     Registry->>RegMap: get(EmailService.class)
     RegMap-->>Registry: emailService (Object)
@@ -49,11 +45,9 @@ sequenceDiagram
     
     Note over Demo: No casting needed! Return type inferred
     
-    %% Direct Method Call (No Casting Required)
     Demo->>EmailSvc: sendEmail("user@example.com", "Welcome!")
     EmailSvc-->>Demo: "Sending email to: user@example.com..."
     
-    %% Get SMS Service (Type-Safe)
     Demo->>Registry: get(SMSService.class)
     Registry->>RegMap: get(SMSService.class)
     RegMap-->>Registry: smsService (Object)
@@ -61,18 +55,13 @@ sequenceDiagram
     SMSClass-->>Registry: smsService (SMSService)
     Registry-->>Demo: smsService (SMSService)
     
-    %% Direct Method Call (No Casting Required)
     Demo->>SMSSvc: sendSMS("+1234567890", "Hello World!")
     SMSSvc-->>Demo: "Sending SMS to: +1234567890..."
     
-    Note over Demo: Compile-Time Safety Demonstration
-    
-    %% This would cause COMPILE ERROR (shown for illustration)
-    Note over Demo: SMSService wrong = registry.get(EmailService.class);<br/>// ❌ Compile Error: Type mismatch!
+    Note over Demo: Compile-Time Safety: Type mismatches caught at compile time
     
     Note over Demo: Generic Method Usage
     
-    %% Generic Method Call
     Demo->>Demo: demonstrateGenericRetrieval(registry, EmailService.class)
     Demo->>Registry: get(EmailService.class)
     Registry->>RegMap: get(EmailService.class)
@@ -83,13 +72,11 @@ sequenceDiagram
     
     Note over Demo: Type Management Operations
     
-    %% Check Type Existence
     Demo->>Registry: hasType(EmailService.class)
     Registry->>RegMap: containsKey(EmailService.class)
     RegMap-->>Registry: true
     Registry-->>Demo: true
     
-    %% Unregister Type-Safe
     Demo->>Registry: unregister(EmailService.class)
     Registry->>RegMap: remove(EmailService.class)
     RegMap-->>Registry: emailService (Object)
@@ -97,7 +84,6 @@ sequenceDiagram
     EmailClass-->>Registry: emailService (EmailService)
     Registry-->>Demo: emailService (EmailService)
     
-    %% Get Registered Types
     Demo->>Registry: getRegisteredTypes()
     Registry->>RegMap: keySet()
     RegMap-->>Registry: Set<Class<?>>
