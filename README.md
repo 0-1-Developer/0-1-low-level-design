@@ -26,8 +26,25 @@ This repository serves as a gold mine for understanding and implementing low-lev
 
 ## 🔧 Design Patterns
 
+### 🎉 Recently Completed
+
+#### [Singleton Pattern](singleton-pattern/) ✅
+**6 implementation variations with comprehensive analysis**
+- 🚀 **Eager Initialization** - Simple, thread-safe
+- 🐌 **Lazy Initialization** - Memory efficient, not thread-safe  
+- 🔒 **Synchronized Method** - Thread-safe with performance overhead
+- 🎯 **Double-Checked Locking** - Optimized with volatile
+- ⭐ **Bill Pugh (Inner Static Helper)** - Recommended best practice
+- 🏆 **Enum Singleton** - Simplest and safest
+
+#### [Registry Pattern](registry-pattern/) ✅
+**3 implementation variations for service location**
+- 🔤 **Basic Registry** - String-based keys
+- 🏭 **Factory Registry** - Lazy initialization with factories
+- 🔐 **Type-Safe Registry** - Compile-time type safety
+
 ### Creational Patterns
-- [ ] Singleton Pattern
+- [x] [Singleton Pattern](singleton-pattern/) - 6 variations with thread-safety analysis
 - [ ] Factory Method Pattern
 - [ ] Abstract Factory Pattern
 - [ ] Builder Pattern
@@ -84,43 +101,46 @@ Each design pattern and system component includes:
 
 - **Problem Statement**: Clear description of the problem being solved
 - **Solution Approach**: Step-by-step design thinking process
-- **Code Implementation**: Clean, well-documented code in multiple languages
-- **UML Diagrams**: Visual representation of the design
-- **Trade-offs**: Analysis of pros and cons
+- **Code Implementation**: Clean, well-documented code with multiple variations
+- **UML Diagrams**: Visual representation with class and sequence diagrams
+- **Trade-offs**: Analysis of pros and cons for each implementation
 - **Real-world Usage**: Examples of where this pattern is used in production
+- **Thread Safety**: Analysis of concurrency considerations where applicable
+- **Performance**: Comparison of different implementation approaches
 
 ### Supported Languages
-- Java
-- Python
-- JavaScript/TypeScript
-- C++
-- Go
-- C#
+- **Java** ✅ - Fully implemented with comprehensive examples
+- **Python** 🚧 - Coming soon
+- **JavaScript/TypeScript** 🚧 - Planned
+- **C++** 🚧 - Planned
+- **Go** 🚧 - Planned
+- **C#** 🚧 - Planned
 
 ## 🚀 Getting Started
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/yourusername/0-1-low-level-design.git
+   git clone https://github.com/0-1-Developer/0-1-low-level-design.git
    cd 0-1-low-level-design
    ```
 
 2. **Navigate to a specific pattern or system design**
    ```bash
-   cd design-patterns/creational/singleton
+   cd singleton-pattern
    # or
-   cd system-designs/url-shortener
+   cd registry-pattern
    ```
 
 3. **Run the examples**
    ```bash
-   # For Java examples
-   javac *.java && java Main
+   # For Java patterns
+   javac -d build -sourcepath src/main/java src/main/java/com/example/**/*.java
+   java -cp build com.example.singleton.SingletonDemo
    
-   # For Python examples
+   # For Python examples (coming soon)
    python main.py
    
-   # For Node.js examples
+   # For Node.js examples (coming soon)
    node main.js
    ```
 
@@ -128,22 +148,20 @@ Each design pattern and system component includes:
 
 ```
 0-1-low-level-design/
-├── design-patterns/
-│   ├── creational/
-│   ├── structural/
-│   └── behavioral/
-├── system-designs/
+├── singleton-pattern/                 # ✅ Completed
+│   ├── src/main/java/com/example/singleton/
+│   ├── docs/uml/                     # UML diagrams
+│   └── README.md                     # 6 implementation variations
+├── registry-pattern/                 # ✅ Completed
+│   ├── src/main/java/com/example/registry/
+│   ├── docs/uml/                     # UML diagrams
+│   └── README.md                     # 3 implementation variations
+├── [future-patterns]/                # 🚧 Coming soon
+├── system-designs/                   # 🚧 Planned
 │   ├── url-shortener/
 │   ├── chat-application/
 │   └── social-media-feed/
-├── concepts/
-│   ├── solid-principles/
-│   ├── design-principles/
-│   └── architectural-patterns/
-├── resources/
-│   ├── books.md
-│   ├── articles.md
-│   └── videos.md
+├── CLAUDE.md                         # Repository guidance
 └── README.md
 ```
 
@@ -183,10 +201,10 @@ We welcome contributions! Please see our [Contributing Guidelines](CONTRIBUTING.
 
 ## 📊 Progress Tracking
 
-- **Design Patterns**: 0/23 completed
+- **Design Patterns**: 2/23 completed (Singleton ✅, Registry ✅)
 - **System Designs**: 0/10 completed
-- **Code Examples**: 0 languages supported
-- **Documentation**: In progress
+- **Code Examples**: Java fully supported
+- **Documentation**: Comprehensive with UML diagrams
 
 ## 🏆 Interview Preparation
 
