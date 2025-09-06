@@ -87,8 +87,12 @@ classDiagram
     
     class Document abstract
     class Application abstract
-    class TextDocument,PdfDocument,WordDocument concrete
-    class TextEditor,PdfReader,WordProcessor creator
+    class TextDocument concrete
+    class PdfDocument concrete
+    class WordDocument concrete
+    class TextEditor creator
+    class PdfReader creator
+    class WordProcessor creator
 ```
 
 ## 🔍 Key Components

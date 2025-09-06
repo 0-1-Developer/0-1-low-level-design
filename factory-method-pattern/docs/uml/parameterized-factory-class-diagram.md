@@ -76,7 +76,7 @@ classDiagram
     
     class ParameterizedDocumentFactory {
         <<utility>>
-        -Map<DocumentType, Function<String, Document>> factories$
+        -Map~DocumentType, Function~ factories$
         +createDocument(DocumentType type, String title)$ Document
         +createDocument(String typeString, String title)$ Document
         +createDocumentWithFormat(DocumentType type, String title, String format)$ Document
@@ -85,7 +85,7 @@ classDiagram
         -ParameterizedDocumentFactory()
     }
     
-    class Function<String, Document> {
+    class Function {
         <<functional interface>>
         +apply(String title) Document
     }
@@ -99,7 +99,7 @@ classDiagram
     
     %% Factory relationships
     ParameterizedDocumentFactory --> DocumentType : uses
-    ParameterizedDocumentFactory --> Function<String, Document> : stores
+    ParameterizedDocumentFactory --> Function : stores
     ParameterizedDocumentFactory ..> TextDocument : creates via λ
     ParameterizedDocumentFactory ..> PdfDocument : creates via λ
     ParameterizedDocumentFactory ..> WordDocument : creates via λ
@@ -107,11 +107,11 @@ classDiagram
     ParameterizedDocumentFactory ..> XmlDocument : creates via λ
     
     %% Function mappings
-    Function<String, Document> ..> TextDocument : TextDocument::new
-    Function<String, Document> ..> PdfDocument : PdfDocument::new
-    Function<String, Document> ..> WordDocument : WordDocument::new
-    Function<String, Document> ..> HtmlDocument : HtmlDocument::new
-    Function<String, Document> ..> XmlDocument : XmlDocument::new
+    Function ..> TextDocument : TextDocument::new
+    Function ..> PdfDocument : PdfDocument::new
+    Function ..> WordDocument : WordDocument::new
+    Function ..> HtmlDocument : HtmlDocument::new
+    Function ..> XmlDocument : XmlDocument::new
     
     %% Styling
     classDef abstract fill:#ffe6e6,stroke:#ff0000,stroke-width:2px
@@ -121,10 +121,14 @@ classDiagram
     classDef functional fill:#f0e6ff,stroke:#9900cc,stroke-width:2px
     
     class Document abstract
-    class TextDocument,PdfDocument,WordDocument,HtmlDocument,XmlDocument concrete
+    class TextDocument concrete
+    class PdfDocument concrete
+    class WordDocument concrete
+    class HtmlDocument concrete
+    class XmlDocument concrete
     class DocumentType enumeration
     class ParameterizedDocumentFactory utility
-    class Function<String, Document> functional
+    class Function functional
 ```
 
 ## 🔍 Key Components

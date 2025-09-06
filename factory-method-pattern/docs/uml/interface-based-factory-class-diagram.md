@@ -96,8 +96,12 @@ classDiagram
     
     class Document abstract
     class DocumentFactory interface
-    class TextDocument,PdfDocument,WordDocument concrete
-    class TextDocumentFactory,PdfDocumentFactory,WordDocumentFactory concrete
+    class TextDocument concrete
+    class PdfDocument concrete
+    class WordDocument concrete
+    class TextDocumentFactory concrete
+    class PdfDocumentFactory concrete
+    class WordDocumentFactory concrete
     class DocumentProcessor processor
 ```
 
