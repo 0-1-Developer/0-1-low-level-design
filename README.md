@@ -86,11 +86,25 @@ This repository serves as a gold mine for understanding and implementing low-lev
 - 🎯 **Property/Listener** - Fine-grained property change notifications
 - 📡 **Event Bus/Pub-Sub** - Decoupled communication via message topics
 
+#### [Builder Pattern](builder-pattern/) ✅
+**11 comprehensive implementation variations**
+- 🏛️ **Classic GoF** - Traditional Director + Builder with multiple representations
+- 🔗 **Fluent Builder** - Method chaining for readable construction
+- 📞 **Telescoping Alternative** - Solves constructor overload problem
+- 🔒 **Immutable Object** - Thread-safe with defensive copying
+- 🏠 **Nested/Inner Builder** - Clean API with `Product.builder().build()`
+- 📋 **Step Builder** - Compile-time enforcement of required fields
+- 👪 **Hierarchical Builder** - Inheritance support with self-type pattern
+- 🎯 **Director-less** - Simple construction without Director class
+- 💬 **DSL Builder** - Domain-specific language for specialized domains
+- ⚡ **Functional Builder** - Lambda configuration with Java 8+
+- 📄 **Prototype + Builder** - Template-based construction for efficiency
+
 ### Creational Patterns
 - [x] [Singleton Pattern](singleton-pattern/) - 6 variations with thread-safety analysis
 - [x] [Factory Method Pattern](factory-method-pattern/) - 9 variations with comprehensive approach analysis
 - [x] [Abstract Factory Pattern](abstract-factory-pattern/) - 8 variations with family consistency analysis
-- [ ] Builder Pattern
+- [x] [Builder Pattern](builder-pattern/) - 11 variations from classic GoF to modern functional approaches
 - [ ] Prototype Pattern
 
 ### Structural Patterns
@@ -183,6 +197,7 @@ Each design pattern and system component includes:
    java -cp build com.example.factorymethod.AllFactoryMethodTestHarness
    java -cp build com.example.abstractfactory.TestHarness
    java -cp build com.example.observer.AllObserverPatternsTestHarness
+   java -cp build com.example.builder.AllBuilderPatternsTestHarness
    
    # For Python examples (coming soon)
    python main.py
@@ -219,6 +234,10 @@ Each design pattern and system component includes:
 │   ├── src/main/java/com/example/observer/
 │   ├── docs/uml/                     # UML diagrams
 │   └── README.md                     # 5 implementation variations
+├── builder-pattern/                  # ✅ Completed
+│   ├── src/main/java/com/example/builder/
+│   ├── docs/uml/                     # UML diagrams
+│   └── README.md                     # 11 implementation variations
 ├── [future-patterns]/                # 🚧 Coming soon
 ├── system-designs/                   # 🚧 Planned
 │   ├── url-shortener/
@@ -264,7 +283,7 @@ We welcome contributions! Please see our [Contributing Guidelines](CONTRIBUTING.
 
 ## 📊 Progress Tracking
 
-- **Design Patterns**: 6/23 completed (Singleton ✅, Registry ✅, Strategy ✅, Factory Method ✅, Abstract Factory ✅, Observer ✅)
+- **Design Patterns**: 7/23 completed (Singleton ✅, Registry ✅, Strategy ✅, Factory Method ✅, Abstract Factory ✅, Observer ✅, Builder ✅)
 - **System Designs**: 0/10 completed
 - **Code Examples**: Java fully supported
 - **Documentation**: Comprehensive with UML diagrams
