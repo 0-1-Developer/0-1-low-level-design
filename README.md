@@ -55,9 +55,21 @@ This repository serves as a gold mine for understanding and implementing low-lev
 - ⚙️ **Config-driven** - External configuration management
 - 🔄 **Retry/Fallback** - Fault-tolerant with automatic recovery
 
+#### [Factory Method Pattern](factory-method-pattern/) ✅
+**9 comprehensive implementation variations**
+- 🏛️ **Classic Inheritance** - Traditional GoF pattern with abstract creators
+- 🔌 **Interface-Based** - Composition over inheritance with factory interfaces
+- 📝 **Static Methods** - Named constructors with optional caching
+- 🎯 **Parameterized** - Single factory method with type parameters
+- 📦 **Registry-Backed** - Dynamic registration for plugin architectures
+- 🔍 **Reflection-Based** - Maximum flexibility with dynamic class loading
+- ⚡ **Functional/Lambda** - Java 8+ functional programming approach
+- 🏗️ **Abstract Default** - Base class with default factory implementation
+- 🧪 **Test-Double** - Factory pattern optimized for testing scenarios
+
 ### Creational Patterns
 - [x] [Singleton Pattern](singleton-pattern/) - 6 variations with thread-safety analysis
-- [ ] Factory Method Pattern
+- [x] [Factory Method Pattern](factory-method-pattern/) - 9 variations with comprehensive approach analysis
 - [ ] Abstract Factory Pattern
 - [ ] Builder Pattern
 - [ ] Prototype Pattern
@@ -149,6 +161,7 @@ Each design pattern and system component includes:
    javac -d build -sourcepath src/main/java src/main/java/com/example/**/*.java
    java -cp build com.example.singleton.SingletonDemo
    java -cp build com.example.strategy.AllStrategiesTestHarness
+   java -cp build com.example.factorymethod.AllFactoryMethodTestHarness
    
    # For Python examples (coming soon)
    python main.py
@@ -171,6 +184,10 @@ Each design pattern and system component includes:
 │   └── README.md                     # 3 implementation variations
 ├── strategy-pattern/                 # ✅ Completed
 │   ├── src/main/java/com/example/strategy/
+│   ├── docs/uml/                     # UML diagrams
+│   └── README.md                     # 9 implementation variations
+├── factory-method-pattern/           # ✅ Completed
+│   ├── src/main/java/com/example/factorymethod/
 │   ├── docs/uml/                     # UML diagrams
 │   └── README.md                     # 9 implementation variations
 ├── [future-patterns]/                # 🚧 Coming soon
@@ -218,7 +235,7 @@ We welcome contributions! Please see our [Contributing Guidelines](CONTRIBUTING.
 
 ## 📊 Progress Tracking
 
-- **Design Patterns**: 3/23 completed (Singleton ✅, Registry ✅, Strategy ✅)
+- **Design Patterns**: 4/23 completed (Singleton ✅, Registry ✅, Strategy ✅, Factory Method ✅)
 - **System Designs**: 0/10 completed
 - **Code Examples**: Java fully supported
 - **Documentation**: Comprehensive with UML diagrams
