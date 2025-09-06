@@ -43,6 +43,18 @@ This repository serves as a gold mine for understanding and implementing low-lev
 - 🏭 **Factory Registry** - Lazy initialization with factories
 - 🔐 **Type-Safe Registry** - Compile-time type safety
 
+#### [Strategy Pattern](strategy-pattern/) ✅
+**9 comprehensive implementation variations**
+- 🎯 **Classic OO** - Traditional object-oriented with payment strategies
+- ⚡ **Functional** - Java 8+ lambdas and method references
+- 📦 **Registry-backed** - Dynamic strategy registration and selection
+- 🎲 **Enum-based** - Type-safe enum strategies with built-in behavior
+- 🔒 **Generic Type-safe** - Compile-time type safety with validation
+- 🚀 **Async** - Non-blocking with CompletableFuture
+- 🔗 **Composite** - Complex strategy combinations
+- ⚙️ **Config-driven** - External configuration management
+- 🔄 **Retry/Fallback** - Fault-tolerant with automatic recovery
+
 ### Creational Patterns
 - [x] [Singleton Pattern](singleton-pattern/) - 6 variations with thread-safety analysis
 - [ ] Factory Method Pattern
@@ -61,7 +73,7 @@ This repository serves as a gold mine for understanding and implementing low-lev
 
 ### Behavioral Patterns
 - [ ] Observer Pattern
-- [ ] Strategy Pattern
+- [x] [Strategy Pattern](strategy-pattern/) - 9 comprehensive variations including async, retry, and composite strategies
 - [ ] Command Pattern
 - [ ] State Pattern
 - [ ] Template Method Pattern
@@ -136,6 +148,7 @@ Each design pattern and system component includes:
    # For Java patterns
    javac -d build -sourcepath src/main/java src/main/java/com/example/**/*.java
    java -cp build com.example.singleton.SingletonDemo
+   java -cp build com.example.strategy.AllStrategiesTestHarness
    
    # For Python examples (coming soon)
    python main.py
@@ -156,6 +169,10 @@ Each design pattern and system component includes:
 │   ├── src/main/java/com/example/registry/
 │   ├── docs/uml/                     # UML diagrams
 │   └── README.md                     # 3 implementation variations
+├── strategy-pattern/                 # ✅ Completed
+│   ├── src/main/java/com/example/strategy/
+│   ├── docs/uml/                     # UML diagrams
+│   └── README.md                     # 9 implementation variations
 ├── [future-patterns]/                # 🚧 Coming soon
 ├── system-designs/                   # 🚧 Planned
 │   ├── url-shortener/
@@ -201,7 +218,7 @@ We welcome contributions! Please see our [Contributing Guidelines](CONTRIBUTING.
 
 ## 📊 Progress Tracking
 
-- **Design Patterns**: 2/23 completed (Singleton ✅, Registry ✅)
+- **Design Patterns**: 3/23 completed (Singleton ✅, Registry ✅, Strategy ✅)
 - **System Designs**: 0/10 completed
 - **Code Examples**: Java fully supported
 - **Documentation**: Comprehensive with UML diagrams
