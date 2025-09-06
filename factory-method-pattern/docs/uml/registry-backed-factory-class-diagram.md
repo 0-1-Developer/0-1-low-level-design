@@ -46,11 +46,11 @@ classDiagram
     
     class DocumentFactoryRegistry {
         <<utility>>
-        -Map~String, Function~ factoryRegistry$
+        -Map<String, Function<String, Document>> factoryRegistry$
         +registerFactory(String type, Function factory)$
         +createDocument(String type, String title)$ Document
         +isTypeSupported(String type)$ boolean
-        +getRegisteredTypes()$ Set~String~
+        +getRegisteredTypes()$ Set<String>
         +unregisterFactory(String type)$
         +clearRegistry()$
         +getRegisteredFactoryCount()$ int
@@ -72,7 +72,7 @@ classDiagram
         +getDocumentType() String
     }
     
-    class Function~String_Document~ {
+    class Function<String, Document> {
         <<functional interface>>
         +apply(String title) Document
     }
@@ -84,7 +84,7 @@ classDiagram
     Document <|-- CustomDocument
     
     %% Composition and usage relationships
-    DocumentFactoryRegistry --> Function~String_Document~ : stores
+    DocumentFactoryRegistry --> Function<String, Document> : stores
     PluginManager --> DocumentFactoryRegistry : manages
     PluginManager ..> CustomDocument : creates for plugins
     
@@ -104,7 +104,7 @@ classDiagram
     class Document abstract
     class TextDocument,PdfDocument,WordDocument,CustomDocument concrete
     class DocumentFactoryRegistry,PluginManager utility
-    class Function~String_Document~ functional
+    class Function<String, Document> functional
     class CustomDocument plugin
 ```
 

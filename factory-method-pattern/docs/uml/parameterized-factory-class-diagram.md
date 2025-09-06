@@ -76,7 +76,7 @@ classDiagram
     
     class ParameterizedDocumentFactory {
         <<utility>>
-        -Map~DocumentType, Function~String, Document~~ factories$
+        -Map<DocumentType, Function<String, Document>> factories$
         +createDocument(DocumentType type, String title)$ Document
         +createDocument(String typeString, String title)$ Document
         +createDocumentWithFormat(DocumentType type, String title, String format)$ Document
@@ -85,7 +85,7 @@ classDiagram
         -ParameterizedDocumentFactory()
     }
     
-    class Function~String_Document~ {
+    class Function<String, Document> {
         <<functional interface>>
         +apply(String title) Document
     }
@@ -99,7 +99,7 @@ classDiagram
     
     %% Factory relationships
     ParameterizedDocumentFactory --> DocumentType : uses
-    ParameterizedDocumentFactory --> Function~String_Document~ : stores
+    ParameterizedDocumentFactory --> Function<String, Document> : stores
     ParameterizedDocumentFactory ..> TextDocument : creates via λ
     ParameterizedDocumentFactory ..> PdfDocument : creates via λ
     ParameterizedDocumentFactory ..> WordDocument : creates via λ
@@ -107,11 +107,11 @@ classDiagram
     ParameterizedDocumentFactory ..> XmlDocument : creates via λ
     
     %% Function mappings
-    Function~String_Document~ ..> TextDocument : TextDocument::new
-    Function~String_Document~ ..> PdfDocument : PdfDocument::new
-    Function~String_Document~ ..> WordDocument : WordDocument::new
-    Function~String_Document~ ..> HtmlDocument : HtmlDocument::new
-    Function~String_Document~ ..> XmlDocument : XmlDocument::new
+    Function<String, Document> ..> TextDocument : TextDocument::new
+    Function<String, Document> ..> PdfDocument : PdfDocument::new
+    Function<String, Document> ..> WordDocument : WordDocument::new
+    Function<String, Document> ..> HtmlDocument : HtmlDocument::new
+    Function<String, Document> ..> XmlDocument : XmlDocument::new
     
     %% Styling
     classDef abstract fill:#ffe6e6,stroke:#ff0000,stroke-width:2px
@@ -124,7 +124,7 @@ classDiagram
     class TextDocument,PdfDocument,WordDocument,HtmlDocument,XmlDocument concrete
     class DocumentType enumeration
     class ParameterizedDocumentFactory utility
-    class Function~String_Document~ functional
+    class Function<String, Document> functional
 ```
 
 ## 🔍 Key Components

@@ -46,7 +46,7 @@ classDiagram
     
     class DocumentFactory {
         <<utility>>
-        -Map~String, Document~ cache$
+        -Map<String, Document> cache$
         +createTextDocument(String title)$ Document
         +createPdfDocument(String title)$ Document
         +createWordDocument(String title)$ Document
@@ -149,7 +149,7 @@ classDiagram
     }
     
     class DocumentFactory {
-        -Map~String, Document~ cache$
+        -Map<String, Document> cache$
         +createCachedDocument(String key)$ Document
     }
     
@@ -228,7 +228,7 @@ classDiagram
     }
     
     class DocumentFactory {
-        -ConcurrentHashMap~String, Document~ cache$
+        -ConcurrentHashMap<String, Document> cache$
         +createCachedDocument(key)$ Document
     }
     

@@ -46,10 +46,10 @@ classDiagram
     
     class ReflectionDocumentFactory {
         <<utility>>
-        -Map~String, Class~? extends Document~~ typeRegistry$
-        -Map~String, Document~ singletonCache$
+        -Map<String, Class<? extends Document>> typeRegistry$
+        -Map<String, Document> singletonCache$
         +registerType(String type, String className)$ void
-        +registerType(String type, Class~Document~ docClass)$ void
+        +registerType(String type, Class<Document> docClass)$ void
         +createDocument(String type, String title)$ Document
         +createSingletonDocument(String type, String title)$ Document
         +createDocumentByClassName(String className, String title)$ Document
@@ -66,22 +66,22 @@ classDiagram
         +ReflectionFactoryException(String message, Throwable cause)
     }
     
-    class Class~T~ {
+    class Class<T> {
         <<java.lang.Class>>
-        +forName(String className)$ Class~?~
-        +getConstructor(Class~?~... parameterTypes) Constructor~T~
-        +isAssignableFrom(Class~?~ cls) boolean
+        +forName(String className)$ Class<?>
+        +getConstructor(Class<?>... parameterTypes) Constructor<T>
+        +isAssignableFrom(Class<?> cls) boolean
         +newInstance() T
     }
     
-    class Constructor~T~ {
+    class Constructor<T> {
         <<java.lang.reflect.Constructor>>
         +newInstance(Object... initargs) T
     }
     
     class ClassLoader {
         <<java.lang.ClassLoader>>
-        +loadClass(String name) Class~?~
+        +loadClass(String name) Class<?>
         +getSystemClassLoader()$ ClassLoader
     }
     
@@ -92,8 +92,8 @@ classDiagram
     Exception <|-- ReflectionFactoryException
     
     %% Reflection relationships
-    ReflectionDocumentFactory --> Class~T~ : uses
-    ReflectionDocumentFactory --> Constructor~T~ : uses
+    ReflectionDocumentFactory --> Class<T> : uses
+    ReflectionDocumentFactory --> Constructor<T> : uses
     ReflectionDocumentFactory --> ClassLoader : uses
     ReflectionDocumentFactory --> ReflectionFactoryException : throws
     
@@ -104,9 +104,9 @@ classDiagram
     ReflectionDocumentFactory ..> WordDocument : creates via reflection
     
     %% Dynamic relationships (dashed = runtime only)
-    Class~T~ -.-> Constructor~T~ : getConstructor()
-    Constructor~T~ -.-> Document : newInstance()
-    ClassLoader -.-> Class~T~ : loadClass()
+    Class<T> -.-> Constructor<T> : getConstructor()
+    Constructor<T> -.-> Document : newInstance()
+    ClassLoader -.-> Class<T> : loadClass()
     
     %% Styling
     classDef abstract fill:#ffe6e6,stroke:#ff0000,stroke-width:2px
@@ -119,7 +119,7 @@ classDiagram
     class TextDocument,PdfDocument,WordDocument concrete
     class ReflectionDocumentFactory utility
     class ReflectionFactoryException exception
-    class Class~T~,Constructor~T~,ClassLoader reflection
+    class Class<T>,Constructor<T>,ClassLoader reflection
 ```
 
 ## 🔍 Key Components
@@ -230,7 +230,7 @@ classDiagram
 classDiagram
     class SingletonCache {
         <<concept>>
-        -Map~String, Document~ cache
+        -Map<String, Document> cache
         +computeIfAbsent(key, factory) Document
         +contains(key) boolean
         +clear() void
@@ -239,7 +239,7 @@ classDiagram
     class CacheKey {
         <<utility>>
         +generate(type, title) String
-        +parse(key) Pair~String, String~
+        +parse(key) Pair<String, String>
     }
     
     ReflectionDocumentFactory --> SingletonCache : uses
